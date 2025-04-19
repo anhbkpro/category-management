@@ -15,8 +15,8 @@ A full-stack application for managing dynamic categories to filter and organize 
 - ASP.NET Core 6.0 Web API
 - Entity Framework Core 6.0
 - SQL Server
+- Clean Architecture with Core and Infrastructure layers
 - Repository Pattern
-- CQRS with MediatR (optional)
 - AutoMapper
 
 ### Frontend
@@ -30,38 +30,46 @@ A full-stack application for managing dynamic categories to filter and organize 
 ### Backend Structure
 
 ```
-CategoryManagement.API/
-├── Controllers/
-│   ├── CategoriesController.cs
-│   └── SessionsController.cs
-├── Data/
-│   ├── ApplicationDbContext.cs
-│   ├── Repositories/
-│   │   ├── Repository.cs
-│   │   ├── CategoryRepository.cs
-│   │   └── SessionRepository.cs
-│   └── Migrations/
-├── Models/
+CategoryManagement/
+├── CategoryManagement.API/
+│   ├── Controllers/
+│   │   ├── CategoriesController.cs
+│   │   └── SessionsController.cs
+│   ├── Program.cs
+│   └── appsettings.json
+├── CategoryManagement.Core/
 │   ├── Domain/
-│   │   ├── Category.cs
-│   │   ├── CategoryCondition.cs
-│   │   ├── Session.cs
-│   │   ├── Speaker.cs
-│   │   ├── Tag.cs
-│   │   ├── SessionTag.cs
-│   │   └── SessionSpeaker.cs
-│   └── DTOs/
-│       ├── CategoryDto.cs
-│       ├── CategoryConditionDto.cs
-│       ├── SessionDto.cs
-│       └── SpeakerDto.cs
-├── Services/
-│   ├── CategoryService.cs
-│   └── SessionService.cs
-├── Mapping/
-│   └── MappingProfile.cs
-├── Program.cs
-└── appsettings.json
+│   │   ├── Entities/
+│   │   │   ├── Category.cs
+│   │   │   ├── CategoryCondition.cs
+│   │   │   ├── Session.cs
+│   │   │   ├── Speaker.cs
+│   │   │   ├── Tag.cs
+│   │   │   ├── SessionTag.cs
+│   │   │   └── SessionSpeaker.cs
+│   │   └── Interfaces/
+│   │       ├── ICategoryRepository.cs
+│   │       └── ISessionRepository.cs
+│   ├── DTOs/
+│   │   ├── CategoryDto.cs
+│   │   ├── CategoryConditionDto.cs
+│   │   ├── SessionDto.cs
+│   │   └── SpeakerDto.cs
+│   └── Services/
+│       ├── CategoryService.cs
+│       └── SessionService.cs
+└── CategoryManagement.Infrastructure/
+    ├── Persistence/
+    │   ├── ApplicationDbContext.cs
+    │   ├── Configurations/
+    │   │   ├── CategoryConfiguration.cs
+    │   │   └── SessionConfiguration.cs
+    │   └── Repositories/
+    │       ├── Repository.cs
+    │       ├── CategoryRepository.cs
+    │       └── SessionRepository.cs
+    └── Migrations/
+        └── [timestamp]_InitialMigration.cs
 ```
 
 ### Frontend Structure
@@ -124,12 +132,12 @@ src/
 
 3. Run EF Core migrations to create the database
    ```bash
-   dotnet ef database update
+   dotnet ef database update --project CategoryManagement.Infrastructure --startup-project CategoryManagement.API
    ```
 
 4. Start the API
    ```bash
-   dotnet run
+   dotnet run --project CategoryManagement.API
    ```
 
 ### Frontend Setup
@@ -214,29 +222,41 @@ The Docker Compose setup includes:
 
 The database consists of the following tables:
 
-1. **Sessions**: Stores session information including title, description, dates, and location
-2. **Speakers**: Contains speaker details
-3. **SessionSpeakers**: Many-to-many relationship between sessions and speakers
-4. **Tags**: Stores tag definitions
+1. **Sessions**: Stores session information including title, description, dates, location, and audit fields
+2. **Speakers**: Contains speaker details with audit fields
+3. **SessionSpeakers**: Many-to-many relationship between sessions and speakers with audit fields
+4. **Tags**: Stores tag definitions with audit fields
 5. **SessionTags**: Many-to-many relationship between sessions and tags
-6. **Categories**: Stores category metadata
-7. **CategoryConditions**: Stores filter conditions for each category
+6. **Categories**: Stores category metadata with audit fields
+7. **CategoryConditions**: Stores filter conditions for each category with audit fields
 
 ## 🏗️ Architecture
 
-This application follows a clean, layered architecture:
+This application follows Clean Architecture principles with the following layers:
 
-1. **Presentation Layer**: Vue 3 frontend and ASP.NET Core Web API controllers
-2. **Service Layer**: Business logic encapsulated in services
-3. **Repository Layer**: Data access implemented with the repository pattern
-4. **Domain Layer**: Core entities and business rules
+1. **Core Layer** (`CategoryManagement.Core`):
+   - Domain Entities: Core business objects
+   - Interfaces: Repository contracts
+   - DTOs: Data transfer objects
+   - Services: Business logic implementation
+
+2. **Infrastructure Layer** (`CategoryManagement.Infrastructure`):
+   - Persistence: Database context and configurations
+   - Repositories: Data access implementations
+   - Migrations: Database schema changes
+
+3. **API Layer** (`CategoryManagement.API`):
+   - Controllers: HTTP endpoints
+   - Configuration: Application settings
+   - Dependency Injection setup
 
 ### Key Architectural Decisions
 
+- **Clean Architecture**: Separation of concerns with Core and Infrastructure layers
 - **Repository Pattern**: Abstracts data access and enables testability
 - **DTOs**: Separate data transfer objects to control what data is exposed to the client
-- **Composition API**: Vue 3 Composition API for better code organization and TypeScript support
-- **Optimized Queries**: Efficient SQL queries using proper indexing and eager loading
+- **Entity Configurations**: Fluent API configurations for entity relationships and constraints
+- **Audit Fields**: Tracking of creation and modification timestamps across entities
 
 ## 🔒 Performance Considerations
 
