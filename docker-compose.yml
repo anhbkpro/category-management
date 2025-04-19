@@ -33,7 +33,7 @@ services:
       - VUE_APP_API_URL=http://api/api
     depends_on:
       api:
-        condition: service_started
+        condition: service_healthy
     networks:
       - app-network
 
