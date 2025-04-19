@@ -47,38 +47,20 @@ namespace CategoryManagement.Infrastructure.Persistence.Repositories
             existingCategory.Description = entity.Description;
             existingCategory.UpdatedAt = DateTime.UtcNow;
 
-            // Handle conditions
+            // Handle conditions - replace all conditions
             if (entity.Conditions != null)
             {
-                // Remove conditions that are no longer in the entity
-                var conditionsToRemove = existingCategory.Conditions
-                    .Where(ec => !entity.Conditions.Any(c => c.Id == ec.Id))
-                    .ToList();
+                // Remove all existing conditions
+                _context.CategoryConditions.RemoveRange(existingCategory.Conditions);
 
-                foreach (var condition in conditionsToRemove)
-                {
-                    existingCategory.Conditions.Remove(condition);
-                }
-
-                // Add or update conditions
+                // Add new conditions
                 foreach (var condition in entity.Conditions)
                 {
-                    var existingCondition = existingCategory.Conditions
-                        .FirstOrDefault(c => c.Id == condition.Id);
-
-                    if (existingCondition == null)
-                    {
-                        // Add new condition
-                        condition.CategoryId = entity.Id;
-                        existingCategory.Conditions.Add(condition);
-                    }
-                    else
-                    {
-                        // Update existing condition
-                        existingCondition.Type = condition.Type;
-                        existingCondition.Value = condition.Value;
-                    }
+                    condition.CategoryId = entity.Id;
+                    condition.CreatedAt = DateTime.UtcNow;
+                    condition.UpdatedAt = DateTime.UtcNow;
                 }
+                existingCategory.Conditions = entity.Conditions.ToList();
             }
 
             await _context.SaveChangesAsync();

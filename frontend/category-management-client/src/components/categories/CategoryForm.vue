@@ -188,6 +188,11 @@ const excludeTags = ref([]);
 const newIncludeTag = ref('');
 const newExcludeTag = ref('');
 
+// Location and Date Range
+const location = ref('');
+const startDate = ref('');
+const endDate = ref('');
+
 // Tags from database
 const availableTags = ref([]);
 const loadingTags = ref(false);
@@ -235,6 +240,7 @@ const filterIncludeTagSuggestions = () => {
 const selectIncludeTag = (tagName) => {
   newIncludeTag.value = tagName;
   addIncludeTag();
+  console.log(`includeTags: ${includeTags.value}`);
   showIncludeTagSuggestions.value = false;
 };
 
@@ -304,16 +310,24 @@ onMounted(() => {
   if (props.category.id) {
     form.value = { ...props.category };
 
-    // Extract include tags
-    const includeTagConditions = props.category.conditions?.filter(c => c.type === 'IncludeTag') || [];
+    // Extract include tags (Type = 0)
+    const includeTagConditions = props.category.conditions?.filter(c => c.type === 0) || [];
     includeTags.value = includeTagConditions.map(c => c.value);
 
-    // Extract exclude tags
-    const excludeTagConditions = props.category.conditions?.filter(c => c.type === 'ExcludeTag') || [];
+    // Extract exclude tags (Type = 1)
+    const excludeTagConditions = props.category.conditions?.filter(c => c.type === 1) || [];
     excludeTags.value = excludeTagConditions.map(c => c.value);
 
-    // Extract other conditions
-    // ...
+    // Extract location (Type = 2)
+    const locationCondition = props.category.conditions?.find(c => c.type === 2);
+    location.value = locationCondition?.value || '';
+
+    // Extract date range (Type = 3 for StartDateMin, Type = 4 for StartDateMax)
+    const startDateCondition = props.category.conditions?.find(c => c.type === 3);
+    const endDateCondition = props.category.conditions?.find(c => c.type === 4);
+
+    startDate.value = startDateCondition?.value || '';
+    endDate.value = endDateCondition?.value || '';
   }
 });
 
@@ -349,24 +363,44 @@ const saveCategory = () => {
     conditions: []
   };
 
-  // Add include tag conditions
+  // Add include tag conditions (Type = 0)
   includeTags.value.forEach(tag => {
     categoryData.conditions.push({
-      type: 'IncludeTag',
+      type: 0,
       value: tag
     });
   });
 
-  // Add exclude tag conditions
+  // Add exclude tag conditions (Type = 1)
   excludeTags.value.forEach(tag => {
     categoryData.conditions.push({
-      type: 'ExcludeTag',
+      type: 1,
       value: tag
     });
   });
 
-  // Add other conditions
-  // ...
+  // Add location condition (Type = 2)
+  if (location.value) {
+    categoryData.conditions.push({
+      type: 2,
+      value: location.value
+    });
+  }
+
+  // Add date range conditions (Type = 3 for StartDateMin, Type = 4 for StartDateMax)
+  if (startDate.value) {
+    categoryData.conditions.push({
+      type: 3,
+      value: startDate.value
+    });
+  }
+
+  if (endDate.value) {
+    categoryData.conditions.push({
+      type: 4,
+      value: endDate.value
+    });
+  }
 
   emit('save', categoryData);
 };

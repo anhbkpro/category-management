@@ -8,7 +8,8 @@ public class MappingProfile : Profile
       public MappingProfile()
       {
           // Domain to DTO mappings
-          CreateMap<Category, CategoryDto>();
+          CreateMap<Category, CategoryDto>()
+              .ForMember(dest => dest.Conditions, opt => opt.MapFrom(src => src.Conditions));
           CreateMap<CategoryCondition, CategoryConditionDto>();
           CreateMap<Session, SessionDto>()
               .ForMember(dest => dest.Tags, opt => opt.MapFrom(src =>
@@ -18,7 +19,8 @@ public class MappingProfile : Profile
           CreateMap<Speaker, SpeakerDto>();
 
           // DTO to Domain mappings
-          CreateMap<CategoryDto, Category>();
+          CreateMap<CategoryDto, Category>()
+              .ForMember(dest => dest.Conditions, opt => opt.MapFrom(src => src.Conditions));
           CreateMap<CategoryConditionDto, CategoryCondition>();
           CreateMap<SessionDto, Session>();
           CreateMap<SpeakerDto, Speaker>();

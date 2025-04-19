@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CategoryManagement.Core", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CategoryManagement.Infrastructure", "CategoryManagement.Infrastructure\CategoryManagement.Infrastructure.csproj", "{9661A046-CA07-4FDF-BC47-DE623AB3CFCD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4B14E6C2-3016-46D5-B775-69CC66C2D694}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CategoryManagement.Tests", "tests\CategoryManagement.Tests\CategoryManagement.Tests.csproj", "{8D41D83C-4743-4F27-B78A-7B2443614B41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{A819AB83-BFBF-4491-BBA7-4B6CBB27B53E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +36,16 @@ Global
 		{9661A046-CA07-4FDF-BC47-DE623AB3CFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9661A046-CA07-4FDF-BC47-DE623AB3CFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9661A046-CA07-4FDF-BC47-DE623AB3CFCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D41D83C-4743-4F27-B78A-7B2443614B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D41D83C-4743-4F27-B78A-7B2443614B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D41D83C-4743-4F27-B78A-7B2443614B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D41D83C-4743-4F27-B78A-7B2443614B41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A819AB83-BFBF-4491-BBA7-4B6CBB27B53E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A819AB83-BFBF-4491-BBA7-4B6CBB27B53E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A819AB83-BFBF-4491-BBA7-4B6CBB27B53E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A819AB83-BFBF-4491-BBA7-4B6CBB27B53E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8D41D83C-4743-4F27-B78A-7B2443614B41} = {4B14E6C2-3016-46D5-B775-69CC66C2D694}
 	EndGlobalSection
 EndGlobal

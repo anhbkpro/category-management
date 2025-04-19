@@ -65,7 +65,7 @@
           </div>
 
           <div class="session-speakers" v-if="session.speakers && session.speakers.length > 0">
-            <strong>Speakers:</strong>
+            <strong>Speakers: </strong>
             <span v-for="(speaker, index) in session.speakers" :key="speaker.id">
               {{ speaker.name }}{{ index < session.speakers.length - 1 ? ', ' : '' }}
             </span>

@@ -18,13 +18,13 @@ namespace CategoryManagement.Infrastructure.Services
 
         public async Task<IEnumerable<CategoryDto>> GetAllCategoriesAsync()
         {
-            var categories = await _categoryRepository.GetAllAsync();
+            var categories = await _categoryRepository.GetAllWithConditionsAsync();
             return _mapper.Map<IEnumerable<CategoryDto>>(categories);
         }
 
         public async Task<CategoryDto> GetCategoryByIdAsync(int id)
         {
-            var category = await _categoryRepository.GetByIdAsync(id);
+            var category = await _categoryRepository.GetByIdWithConditionsAsync(id);
             return _mapper.Map<CategoryDto>(category);
         }
 
