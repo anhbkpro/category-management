@@ -28,6 +28,12 @@ namespace CategoryManagement.Infrastructure.Persistence.Repositories
         public override async Task<Category> AddAsync(Category entity)
         {
             entity.CreatedAt = DateTime.UtcNow;
+            entity.UpdatedAt = DateTime.UtcNow;
+            foreach (var condition in entity.Conditions)
+            {
+                condition.CreatedAt = DateTime.UtcNow;
+                condition.UpdatedAt = DateTime.UtcNow;
+            }
             await _context.Categories.AddAsync(entity);
             await _context.SaveChangesAsync();
             return entity;
@@ -54,13 +60,25 @@ namespace CategoryManagement.Infrastructure.Persistence.Repositories
                 _context.CategoryConditions.RemoveRange(existingCategory.Conditions);
 
                 // Add new conditions
+                var now = DateTime.UtcNow;
                 foreach (var condition in entity.Conditions)
                 {
+                    // For existing conditions, preserve CreatedAt and update UpdatedAt
+                    if (condition.Id > 0)
+                    {
+                        condition.UpdatedAt = now;
+                    }
+                    // For new conditions, set both CreatedAt and UpdatedAt
+                    else
+                    {
+                        condition.CreatedAt = now;
+                        condition.UpdatedAt = now;
+                    }
                     condition.CategoryId = entity.Id;
-                    condition.CreatedAt = DateTime.UtcNow;
-                    condition.UpdatedAt = DateTime.UtcNow;
                 }
                 existingCategory.Conditions = entity.Conditions.ToList();
+            } else {
+                existingCategory.Conditions = new List<CategoryCondition>();
             }
 
             await _context.SaveChangesAsync();
