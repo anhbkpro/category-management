@@ -2,7 +2,7 @@
 import apiClient from './api';
 
 export const sessionService = {
-  getByCategory(categoryId, page = 1, pageSize = 10, sortBy = 'startDate', ascending = true) {
+  getByCategory(categoryId, page = 1, pageSize = 9, sortBy = 'startDate', ascending = true) {
     return apiClient.get('/sessions/category/' + categoryId, {
       params: {
         page,

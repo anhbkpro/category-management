@@ -105,12 +105,13 @@ src/
 - .NET 6.0 SDK
 - Node.js (v14 or later)
 - SQL Server
+- Docker and Docker Compose (for containerized deployment)
 
 ### Backend Setup
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/category-management.git
+   git clone git@github.com:anhbkpro/category-management.git
    cd category-management/backend
    ```
 
@@ -157,6 +158,57 @@ src/
    ```bash
    npm run build
    ```
+
+### Docker Compose Setup
+
+The application can be started using Docker Compose, which will set up the entire stack including the database, API, and frontend.
+
+1. Make sure Docker and Docker Compose are installed on your system
+   ```bash
+   docker --version
+   docker-compose --version
+   ```
+
+2. Navigate to the project root directory
+   ```bash
+   cd category-management
+   ```
+
+3. Start the application using Docker Compose
+   ```bash
+   docker-compose up -d
+   ```
+
+4. Check the status of the containers
+   ```bash
+   docker-compose ps
+   ```
+
+5. Access the application:
+   - Frontend: http://localhost:8080
+   - API: http://localhost:5001
+   - API Health Check: http://localhost:5001/health
+
+6. View logs from the containers
+   ```bash
+   docker-compose logs -f
+   ```
+
+7. Stop the application
+   ```bash
+   docker-compose down
+   ```
+
+8. To rebuild the containers after making changes
+   ```bash
+   docker-compose up -d --build
+   ```
+
+The Docker Compose setup includes:
+- SQL Server database with persistent volume
+- ASP.NET Core API with health checks
+- Vue.js frontend
+- Proper service dependencies and health checks to ensure services start in the correct order
 
 ## 🗃️ Database Schema
 

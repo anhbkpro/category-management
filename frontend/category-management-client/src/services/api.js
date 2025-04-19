@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: process.env.VUE_APP_API_URL || 'http://localhost:5093/api',
+  baseURL: process.env.VUE_APP_API_URL || 'http://localhost:5001/api',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -15,8 +15,8 @@ const apiClient = axios.create({
 apiClient.interceptors.response.use(
   response => response,
   error => {
+    console.error('API Error:', error);
     const errorMessage = error.response?.data?.message || error.message || 'Unknown error occurred';
-    console.error('API Error:', errorMessage);
     return Promise.reject(new Error(errorMessage));
   }
 );

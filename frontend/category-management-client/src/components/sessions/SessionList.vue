@@ -122,7 +122,7 @@ const props = defineProps({
     type: Object,
     default: () => ({
       currentPage: 1,
-      pageSize: 10,
+      pageSize: 9,
       totalCount: 0,
       totalPages: 1
     })

@@ -1,6 +1,6 @@
 public static class DataGenerator
 {
-    public static void GenerateTestData(IServiceProvider serviceProvider, int sessionCount = 100000)
+    public static void GenerateTestData(IServiceProvider serviceProvider, int sessionCount = 1000)
     {
         using (var scope = serviceProvider.CreateScope())
         {
@@ -25,6 +25,12 @@ public static class DataGenerator
             if (!context.Speakers.Any())
             {
                 GenerateSpeakers(context);
+            }
+
+            // Generate categories if they don't exist
+            if (!context.Categories.Any())
+            {
+                GenerateCategories(context);
             }
 
             // Get existing tags and speakers
@@ -190,6 +196,129 @@ public static class DataGenerator
         context.SaveChanges();
 
         Console.WriteLine($"Added {speakers.Count} speakers");
+    }
+
+    private static void GenerateCategories(ApplicationDbContext context)
+    {
+        var categories = new List<Category>
+        {
+            new Category
+            {
+                Name = "Cloud Computing",
+                Description = "Sessions focused on cloud platforms and services",
+                CreatedAt = DateTime.UtcNow,
+                Conditions = new List<CategoryCondition>
+                {
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "aws" },
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "azure" },
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "gcp" },
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "cloud" }
+                }
+            },
+            new Category
+            {
+                Name = "Container Technologies",
+                Description = "Sessions about containerization and orchestration",
+                CreatedAt = DateTime.UtcNow,
+                Conditions = new List<CategoryCondition>
+                {
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "docker" },
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "kubernetes" }
+                }
+            },
+            new Category
+            {
+                Name = "Web Development",
+                Description = "Sessions covering web development technologies",
+                CreatedAt = DateTime.UtcNow,
+                Conditions = new List<CategoryCondition>
+                {
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "web" },
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "frontend" },
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "backend" }
+                }
+            },
+            new Category
+            {
+                Name = "Advanced Topics",
+                Description = "Sessions for experienced developers",
+                CreatedAt = DateTime.UtcNow,
+                Conditions = new List<CategoryCondition>
+                {
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "advanced" },
+                    new CategoryCondition { Type = ConditionType.ExcludeTag, Value = "beginner" }
+                }
+            },
+            new Category
+            {
+                Name = "Beginner Friendly",
+                Description = "Sessions suitable for beginners",
+                CreatedAt = DateTime.UtcNow,
+                Conditions = new List<CategoryCondition>
+                {
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "beginner" },
+                    new CategoryCondition { Type = ConditionType.ExcludeTag, Value = "advanced" }
+                }
+            },
+            new Category
+            {
+                Name = "Online Sessions",
+                Description = "All online sessions",
+                CreatedAt = DateTime.UtcNow,
+                Conditions = new List<CategoryCondition>
+                {
+                    new CategoryCondition { Type = ConditionType.Location, Value = "Online" }
+                }
+            },
+            new Category
+            {
+                Name = "Upcoming Sessions",
+                Description = "Sessions scheduled for the next 30 days",
+                CreatedAt = DateTime.UtcNow,
+                Conditions = new List<CategoryCondition>
+                {
+                    new CategoryCondition { Type = ConditionType.StartDateMin, Value = DateTime.UtcNow.ToString("O") },
+                    new CategoryCondition { Type = ConditionType.StartDateMax, Value = DateTime.UtcNow.AddDays(30).ToString("O") }
+                }
+            },
+            new Category
+            {
+                Name = "AI and Machine Learning",
+                Description = "Sessions about AI and ML technologies",
+                CreatedAt = DateTime.UtcNow,
+                Conditions = new List<CategoryCondition>
+                {
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "ai" },
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "machine-learning" }
+                }
+            },
+            new Category
+            {
+                Name = "Security Focused",
+                Description = "Sessions about security best practices",
+                CreatedAt = DateTime.UtcNow,
+                Conditions = new List<CategoryCondition>
+                {
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "security" }
+                }
+            },
+            new Category
+            {
+                Name = "DevOps Practices",
+                Description = "Sessions about DevOps methodologies and tools",
+                CreatedAt = DateTime.UtcNow,
+                Conditions = new List<CategoryCondition>
+                {
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "devops" },
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "ci/cd" }
+                }
+            }
+        };
+
+        context.Categories.AddRange(categories);
+        context.SaveChanges();
+
+        Console.WriteLine($"Added {categories.Count} categories with conditions");
     }
 
     private static string GetRandomSessionTitle(Random random)

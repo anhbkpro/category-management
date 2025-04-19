@@ -8,7 +8,7 @@ export function useSessions() {
   const error = ref(null);
   const pagination = ref({
     currentPage: 1,
-    pageSize: 10,
+    pageSize: 9,
     totalCount: 0,
     totalPages: 0
   });
@@ -28,7 +28,7 @@ export function useSessions() {
   const fetchSessionsByCategory = async (
     categoryId,
     page = 1,
-    pageSize = 10,
+    pageSize = 9,
     sortBy = 'startDate',
     ascending = true
   ) => {

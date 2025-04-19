@@ -1,0 +1,65 @@
+services:
+  # Backend API
+  api:
+    build:
+      context: ./backend/CategoryManagement
+      dockerfile: Dockerfile
+    ports:
+      - "5001:80"
+      - "5002:443"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=db;Database=CategoryManagement;User Id=sa;Password=YourStrongPassword123!;TrustServerCertificate=True;
+    networks:
+      - app-network
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # Frontend Vue app
+  client:
+    build:
+      context: ./frontend/category-management-client
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - VUE_APP_API_URL=http://api/api
+    depends_on:
+      api:
+        condition: service_started
+    networks:
+      - app-network
+
+  # SQL Server database
+  db:
+    image: mcr.microsoft.com/azure-sql-edge
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrongPassword123!
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqldata:/var/opt/mssql
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "/bin/bash", "-c", "echo > /dev/tcp/localhost/1433"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  sqldata:
+    driver: local

@@ -16,7 +16,7 @@ public class SessionsController : ControllerBase
     public async Task<ActionResult<PagedResult<SessionDto>>> GetSessionsByCategory(
         int categoryId,
         [FromQuery] int page = 1,
-        [FromQuery] int pageSize = 10,
+        [FromQuery] int pageSize = 9,
         [FromQuery] string sortBy = "startDate",
         [FromQuery] bool ascending = true)
     {
