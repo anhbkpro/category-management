@@ -230,4 +230,26 @@ button {
   text-align: center;
   color: var(--text-light);
 }
+
+/* Add these styles to remove the underline from navigation links */
+.nav-link {
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: none;
+}
+
+/* If you're using router-link, you might need to target it specifically */
+.router-link-active,
+.router-link-exact-active {
+  text-decoration: none;
+}
+
+/* You can also add a subtle effect on hover instead of an underline */
+.nav-link:hover {
+  opacity: 0.8;
+  /* Or you could use a different effect like: */
+  /* border-bottom: 2px solid #42b983; */
+}
 </style>
