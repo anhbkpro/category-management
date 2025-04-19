@@ -1,7 +1,10 @@
 using AutoMapper;
+using CategoryManagement.Core.Application.DTOs;
+using CategoryManagement.Core.Domain;
+using CategoryManagement.Core.Domain.Entities;
 
 
-  public class MappingProfile : Profile
+public class MappingProfile : Profile
   {
       public MappingProfile()
       {

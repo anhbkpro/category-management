@@ -9,130 +9,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9aa431be-4d0c-4510-910a-cb4b7d8646dd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CategoryManagement/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CategoryManagement/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CategoryManagement.API/CategoryManagement.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/CategoryManagement.API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Controllers/CategoriesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/Controllers/CategoriesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Controllers/SessionsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/Controllers/SessionsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Controllers/TagsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/Controllers/TagsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Data/ApplicationDbContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Data/Migrations/InitialMigration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/Data/Migrations/InitialMigration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Data/Repositories/CategoryRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Data/Repositories/Repository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Data/Repositories/SessionRepository.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/CategoryManagement.API/DataGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/DataGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/HealthChecks/DatabaseHealthCheck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/HealthChecks/DatabaseHealthCheck.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Mapping/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/Mapping/MappingProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Migrations/20250417161757_InitialMigration.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Migrations/20250417161757_InitialMigration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Models/DTOs/CategoryConditionDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Models/DTOs/CategoryDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Models/DTOs/SessionDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Models/DTOs/SpeakerDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Models/DTOs/TagDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Models/Domain/Category.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Models/Domain/CategoryCondition.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Models/Domain/Session.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Models/Domain/SessionSpeaker.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Models/Domain/SessionTag.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Models/Domain/Speaker.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Models/Domain/Tag.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Azure.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Azure.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Azure.Identity.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Azure.Identity.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Services/CategoryService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Services/SessionService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/Services/TagService.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/CategoryManagement.API.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/CategoryManagement.API.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/CategoryManagement.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/CategoryManagement.API.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/CategoryManagement.API.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/CategoryManagement.API.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Bcl.AsyncInterfaces.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Bcl.AsyncInterfaces.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Build.Locator.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.CodeAnalysis.CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.CodeAnalysis.CSharp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.CodeAnalysis.Workspaces.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.CodeAnalysis.Workspaces.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.CodeAnalysis.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.CodeAnalysis.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Data.SqlClient.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Data.SqlClient.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Design.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Design.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Extensions.Caching.Abstractions.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Extensions.Caching.Memory.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Extensions.DependencyModel.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Extensions.DependencyModel.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Extensions.Options.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Extensions.Primitives.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Identity.Client.Extensions.Msal.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Identity.Client.Extensions.Msal.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Identity.Client.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Identity.Client.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Mono.TextTemplating.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/Mono.TextTemplating.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.ClientModel.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.CodeDom.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.CodeDom.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.Composition.AttributedModel.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.Composition.AttributedModel.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.Composition.Convention.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.Composition.Convention.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.Composition.Hosting.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.Composition.Hosting.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.Composition.Runtime.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.Composition.Runtime.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.Composition.TypedParts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.Composition.TypedParts.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.Diagnostics.DiagnosticSource.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.Formats.Asn1.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.IO.Pipelines.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.Text.Encodings.Web.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/System.Text.Json.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.CSharp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.CSharp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.CSharp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.CSharp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.CSharp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.CSharp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.CSharp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.CSharp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.CSharp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/runtimes/unix/lib/net6.0/Microsoft.Data.SqlClient.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/runtimes/unix/lib/net6.0/Microsoft.Data.SqlClient.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/runtimes/win/lib/net6.0/Microsoft.Data.SqlClient.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/runtimes/win/lib/net6.0/Microsoft.Data.SqlClient.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CategoryManagement.API/obj/CategoryManagement.API.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/obj/CategoryManagement.API.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/obj/CategoryManagement.API.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/obj/CategoryManagement.API.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/obj/CategoryManagement.API.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/obj/CategoryManagement.API.csproj.nuget.g.targets" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CategoryManagement.API/obj/Debug/net8.0/CategoryManagement.API.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/obj/Debug/net8.0/CategoryManagement.API.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CategoryManagement.API/obj/Debug/net8.0/CategoryManagement.API.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/obj/Debug/net8.0/CategoryManagement.API.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/obj/Debug/net8.0/CategoryManagement.API.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/obj/Debug/net8.0/CategoryManagement.API.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CategoryManagement.API/obj/Debug/net8.0/CategoryManagement.API.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/obj/Debug/net8.0/CategoryManagement.API.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CategoryManagement.API/obj/Debug/net8.0/CategoryManagement.API.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/obj/Debug/net8.0/CategoryManagement.API.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CategoryManagement.API/obj/Debug/net8.0/CategoryManagement.API.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/obj/Debug/net8.0/CategoryManagement.API.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CategoryManagement.API/obj/Debug/net8.0/CategoryManagement.API.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/obj/Debug/net8.0/CategoryManagement.API.csproj.FileListAbsolute.txt" afterDir="false" />
@@ -144,7 +58,8 @@
       <change beforePath="$PROJECT_DIR$/CategoryManagement.API/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CategoryManagement.API/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CategoryManagement.API/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.API/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/category-management-client/src/services/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/category-management-client/src/services/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CategoryManagement.sln" beforeDir="false" afterPath="$PROJECT_DIR$/CategoryManagement.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,6 +75,10 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bf9021a960b74107a7e141aa06bc9d8a0a53c929178c2fb95b1597be8af8dc/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 4
 }]]></component>
@@ -173,6 +92,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.CategoryManagement.API: http.executor": "Run",
+    ".NET Launch Settings Profile.CategoryManagement.API: https.executor": "Run",
+    "HTTP Request.CategoryManagement.API | #1.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
@@ -186,6 +107,9 @@
   }
 }]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.CategoryManagement.API: http">
+    <configuration name="CategoryManagement.API | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/CategoryManagement.API/CategoryManagement.API.http" executionIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration name="CategoryManagement.API: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CategoryManagement.API/CategoryManagement.API.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -216,6 +140,11 @@
         <option name="Build" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.CategoryManagement.API | #1" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -225,7 +154,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1744873843346</updated>
-      <workItem from="1744873845605" duration="10964000" />
+      <workItem from="1744873845605" duration="16769000" />
     </task>
     <servers />
   </component>

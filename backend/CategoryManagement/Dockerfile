@@ -10,9 +10,19 @@ HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
+
+# Copy solution and project files
 COPY ["CategoryManagement.API/CategoryManagement.API.csproj", "CategoryManagement.API/"]
+COPY ["CategoryManagement.Core/CategoryManagement.Core.csproj", "CategoryManagement.Core/"]
+COPY ["CategoryManagement.Infrastructure/CategoryManagement.Infrastructure.csproj", "CategoryManagement.Infrastructure/"]
+
+# Restore dependencies
 RUN dotnet restore "CategoryManagement.API/CategoryManagement.API.csproj"
+
+# Copy the rest of the code
 COPY . .
+
+# Build the application
 WORKDIR "/src/CategoryManagement.API"
 RUN dotnet build "CategoryManagement.API.csproj" -c Release -o /app/build
 

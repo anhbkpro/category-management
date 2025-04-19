@@ -139,3 +139,7 @@
 /Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.API/obj/Debug/net8.0/ref/CategoryManagement.API.dll
 /Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.API/bin/Debug/net8.0/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore.dll
 /Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.API/obj/Debug/net8.0/CategoryManagement.API.sourcelink.json
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.API/bin/Debug/net8.0/CategoryManagement.Core.dll
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.API/bin/Debug/net8.0/CategoryManagement.Infrastructure.dll
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.API/bin/Debug/net8.0/CategoryManagement.Core.pdb
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.API/bin/Debug/net8.0/CategoryManagement.Infrastructure.pdb

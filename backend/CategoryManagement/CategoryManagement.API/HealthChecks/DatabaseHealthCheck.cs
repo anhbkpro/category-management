@@ -1,3 +1,4 @@
+using CategoryManagement.Infrastructure.Persistence;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.Text.Json.Serialization;
-using CategoryManagement.API.HealthChecks;
+using CategoryManagement.Core.Application.Interfaces;
+using CategoryManagement.Infrastructure.Services;
+using CategoryManagement.Infrastructure.Persistence;
+using CategoryManagement.Infrastructure.Persistence.Repositories;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -43,11 +45,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ISessionRepository, SessionRepository>();
+builder.Services.AddScoped<ICategoryConditionRepository, CategoryConditionRepository>();
 
 // Register services
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ISessionService, SessionService>();
 builder.Services.AddScoped<ITagService, TagService>();
+builder.Services.AddScoped<ICategoryConditionService, CategoryConditionService>();
+
 // Add AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

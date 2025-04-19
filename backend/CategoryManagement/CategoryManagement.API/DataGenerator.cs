@@ -1,3 +1,7 @@
+using CategoryManagement.Core.Domain;
+using CategoryManagement.Core.Domain.Entities;
+using CategoryManagement.Infrastructure.Persistence;
+
 public static class DataGenerator
 {
     public static void GenerateTestData(IServiceProvider serviceProvider, int sessionCount = 1000)
@@ -51,6 +55,7 @@ public static class DataGenerator
                 {
                     var startDate = DateTime.UtcNow.AddDays(random.Next(-180, 180));
                     var durationHours = random.Next(1, 8);
+                    var now = DateTime.UtcNow;
 
                     var session = new Session
                     {
@@ -60,6 +65,9 @@ public static class DataGenerator
                         EndDate = startDate.AddHours(durationHours),
                         Location = locations[random.Next(locations.Length)],
                         IsOnline = random.Next(2) == 0, // 50% chance of being online
+                        Status = "Scheduled",
+                        CreatedAt = now,
+                        UpdatedAt = now,
                         SessionTags = new List<SessionTag>(),
                         SessionSpeakers = new List<SessionSpeaker>()
                     };
@@ -94,7 +102,9 @@ public static class DataGenerator
                         session.SessionSpeakers.Add(new SessionSpeaker
                         {
                             Session = session,
-                            Speaker = allSpeakers[speakerIndex]
+                            Speaker = allSpeakers[speakerIndex],
+                            CreatedAt = now,
+                            UpdatedAt = now
                         });
                     }
 
@@ -113,43 +123,44 @@ public static class DataGenerator
 
     private static void GenerateTags(ApplicationDbContext context)
     {
+        var now = DateTime.UtcNow;
         var tags = new List<Tag>
         {
-            new Tag { Name = "aws" },
-            new Tag { Name = "azure" },
-            new Tag { Name = "gcp" },
-            new Tag { Name = "kubernetes" },
-            new Tag { Name = "docker" },
-            new Tag { Name = "beginner" },
-            new Tag { Name = "intermediate" },
-            new Tag { Name = "advanced" },
-            new Tag { Name = "web" },
-            new Tag { Name = "mobile" },
-            new Tag { Name = "cloud" },
-            new Tag { Name = "security" },
-            new Tag { Name = "database" },
-            new Tag { Name = "frontend" },
-            new Tag { Name = "backend" },
-            new Tag { Name = "devops" },
-            new Tag { Name = "machine-learning" },
-            new Tag { Name = "ai" },
-            new Tag { Name = "blockchain" },
-            new Tag { Name = "iot" },
-            new Tag { Name = "networking" },
-            new Tag { Name = "architecture" },
-            new Tag { Name = "performance" },
-            new Tag { Name = "testing" },
-            new Tag { Name = "agile" },
-            new Tag { Name = "microservices" },
-            new Tag { Name = "serverless" },
-            new Tag { Name = "javascript" },
-            new Tag { Name = "python" },
-            new Tag { Name = "csharp" },
-            new Tag { Name = "java" },
-            new Tag { Name = "react" },
-            new Tag { Name = "angular" },
-            new Tag { Name = "vue" },
-            new Tag { Name = "dotnet" }
+            new Tag { Name = "aws", Description = "Amazon Web Services", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "azure", Description = "Microsoft Azure", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "gcp", Description = "Google Cloud Platform", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "kubernetes", Description = "Container Orchestration", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "docker", Description = "Container Platform", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "beginner", Description = "Beginner Level", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "intermediate", Description = "Intermediate Level", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "advanced", Description = "Advanced Level", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "web", Description = "Web Development", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "mobile", Description = "Mobile Development", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "cloud", Description = "Cloud Computing", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "security", Description = "Security", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "database", Description = "Database", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "frontend", Description = "Frontend Development", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "backend", Description = "Backend Development", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "devops", Description = "DevOps", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "machine-learning", Description = "Machine Learning", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "ai", Description = "Artificial Intelligence", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "blockchain", Description = "Blockchain", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "iot", Description = "Internet of Things", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "networking", Description = "Networking", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "architecture", Description = "Software Architecture", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "performance", Description = "Performance Optimization", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "testing", Description = "Testing", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "agile", Description = "Agile Methodology", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "microservices", Description = "Microservices", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "serverless", Description = "Serverless Computing", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "javascript", Description = "JavaScript", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "python", Description = "Python", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "csharp", Description = "C#", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "java", Description = "Java", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "react", Description = "React", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "angular", Description = "Angular", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "vue", Description = "Vue.js", CreatedAt = now, UpdatedAt = now },
+            new Tag { Name = "dotnet", Description = ".NET", CreatedAt = now, UpdatedAt = now }
         };
 
         context.Tags.AddRange(tags);
@@ -177,6 +188,7 @@ public static class DataGenerator
 
         var random = new Random();
         var speakers = new List<Speaker>();
+        var now = DateTime.UtcNow;
 
         for (int i = 0; i < 50; i++)
         {
@@ -188,7 +200,9 @@ public static class DataGenerator
             {
                 Name = $"{firstName} {lastName}",
                 Bio = $"{speakerExpertise} professional with {random.Next(2, 20)} years of industry experience.",
-                ProfileImage = "" // Empty string to satisfy NOT NULL constraint
+                ProfileImage = "", // Empty string to satisfy NOT NULL constraint
+                CreatedAt = now,
+                UpdatedAt = now
             });
         }
 
@@ -200,117 +214,93 @@ public static class DataGenerator
 
     private static void GenerateCategories(ApplicationDbContext context)
     {
+        var now = DateTime.UtcNow;
         var categories = new List<Category>
         {
             new Category
             {
                 Name = "Cloud Computing",
                 Description = "Sessions focused on cloud platforms and services",
-                CreatedAt = DateTime.UtcNow,
+                CreatedAt = now,
+                UpdatedAt = now,
                 Conditions = new List<CategoryCondition>
                 {
-                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "aws" },
-                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "azure" },
-                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "gcp" },
-                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "cloud" }
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "aws", CreatedAt = now, UpdatedAt = now },
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "azure", CreatedAt = now, UpdatedAt = now },
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "gcp", CreatedAt = now, UpdatedAt = now },
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "cloud", CreatedAt = now, UpdatedAt = now }
                 }
             },
             new Category
             {
                 Name = "Container Technologies",
                 Description = "Sessions about containerization and orchestration",
-                CreatedAt = DateTime.UtcNow,
+                CreatedAt = now,
+                UpdatedAt = now,
                 Conditions = new List<CategoryCondition>
                 {
-                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "docker" },
-                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "kubernetes" }
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "docker", CreatedAt = now, UpdatedAt = now },
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "kubernetes", CreatedAt = now, UpdatedAt = now }
                 }
             },
             new Category
             {
                 Name = "Web Development",
                 Description = "Sessions covering web development technologies",
-                CreatedAt = DateTime.UtcNow,
+                CreatedAt = now,
+                UpdatedAt = now,
                 Conditions = new List<CategoryCondition>
                 {
-                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "web" },
-                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "frontend" },
-                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "backend" }
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "web", CreatedAt = now, UpdatedAt = now },
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "frontend", CreatedAt = now, UpdatedAt = now },
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "backend", CreatedAt = now, UpdatedAt = now }
                 }
             },
             new Category
             {
                 Name = "Advanced Topics",
                 Description = "Sessions for experienced developers",
-                CreatedAt = DateTime.UtcNow,
+                CreatedAt = now,
+                UpdatedAt = now,
                 Conditions = new List<CategoryCondition>
                 {
-                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "advanced" },
-                    new CategoryCondition { Type = ConditionType.ExcludeTag, Value = "beginner" }
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "advanced", CreatedAt = now, UpdatedAt = now },
+                    new CategoryCondition { Type = ConditionType.ExcludeTag, Value = "beginner", CreatedAt = now, UpdatedAt = now }
                 }
             },
             new Category
             {
                 Name = "Beginner Friendly",
                 Description = "Sessions suitable for beginners",
-                CreatedAt = DateTime.UtcNow,
+                CreatedAt = now,
+                UpdatedAt = now,
                 Conditions = new List<CategoryCondition>
                 {
-                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "beginner" },
-                    new CategoryCondition { Type = ConditionType.ExcludeTag, Value = "advanced" }
+                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "beginner", CreatedAt = now, UpdatedAt = now },
+                    new CategoryCondition { Type = ConditionType.ExcludeTag, Value = "advanced", CreatedAt = now, UpdatedAt = now }
                 }
             },
             new Category
             {
                 Name = "Online Sessions",
                 Description = "All online sessions",
-                CreatedAt = DateTime.UtcNow,
+                CreatedAt = now,
+                UpdatedAt = now,
                 Conditions = new List<CategoryCondition>
                 {
-                    new CategoryCondition { Type = ConditionType.Location, Value = "Online" }
+                    new CategoryCondition { Type = ConditionType.Location, Value = "Online", CreatedAt = now, UpdatedAt = now }
                 }
             },
             new Category
             {
                 Name = "Upcoming Sessions",
                 Description = "Sessions scheduled for the next 30 days",
-                CreatedAt = DateTime.UtcNow,
+                CreatedAt = now,
+                UpdatedAt = now,
                 Conditions = new List<CategoryCondition>
                 {
-                    new CategoryCondition { Type = ConditionType.StartDateMin, Value = DateTime.UtcNow.ToString("O") },
-                    new CategoryCondition { Type = ConditionType.StartDateMax, Value = DateTime.UtcNow.AddDays(30).ToString("O") }
-                }
-            },
-            new Category
-            {
-                Name = "AI and Machine Learning",
-                Description = "Sessions about AI and ML technologies",
-                CreatedAt = DateTime.UtcNow,
-                Conditions = new List<CategoryCondition>
-                {
-                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "ai" },
-                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "machine-learning" }
-                }
-            },
-            new Category
-            {
-                Name = "Security Focused",
-                Description = "Sessions about security best practices",
-                CreatedAt = DateTime.UtcNow,
-                Conditions = new List<CategoryCondition>
-                {
-                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "security" }
-                }
-            },
-            new Category
-            {
-                Name = "DevOps Practices",
-                Description = "Sessions about DevOps methodologies and tools",
-                CreatedAt = DateTime.UtcNow,
-                Conditions = new List<CategoryCondition>
-                {
-                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "devops" },
-                    new CategoryCondition { Type = ConditionType.IncludeTag, Value = "ci/cd" }
+                    new CategoryCondition { Type = ConditionType.StartDateMin, Value = DateTime.UtcNow.ToString("O"), CreatedAt = now, UpdatedAt = now },
+                    new CategoryCondition { Type = ConditionType.StartDateMax, Value = DateTime.UtcNow.AddDays(30).ToString("O"), CreatedAt = now, UpdatedAt = now }
                 }
             }
         };

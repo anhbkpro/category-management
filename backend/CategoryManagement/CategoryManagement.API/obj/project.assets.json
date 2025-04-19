@@ -1738,6 +1738,35 @@
             "rid": "win"
           }
         }
+      },
+      "CategoryManagement.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Abstractions": "8.0.4"
+        },
+        "compile": {
+          "bin/placeholder/CategoryManagement.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CategoryManagement.Core.dll": {}
+        }
+      },
+      "CategoryManagement.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "AutoMapper": "12.0.1",
+          "CategoryManagement.Core": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "8.0.4",
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.4"
+        },
+        "compile": {
+          "bin/placeholder/CategoryManagement.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CategoryManagement.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -4820,11 +4849,23 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "CategoryManagement.Core/1.0.0": {
+      "type": "project",
+      "path": "../CategoryManagement.Core/CategoryManagement.Core.csproj",
+      "msbuildProject": "../CategoryManagement.Core/CategoryManagement.Core.csproj"
+    },
+    "CategoryManagement.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../CategoryManagement.Infrastructure/CategoryManagement.Infrastructure.csproj",
+      "msbuildProject": "../CategoryManagement.Infrastructure/CategoryManagement.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
+      "CategoryManagement.Core >= 1.0.0",
+      "CategoryManagement.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 8.0.8",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.4",
@@ -4857,7 +4898,14 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Core/CategoryManagement.Core.csproj": {
+              "projectPath": "/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Core/CategoryManagement.Core.csproj"
+            },
+            "/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Infrastructure/CategoryManagement.Infrastructure.csproj": {
+              "projectPath": "/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Infrastructure/CategoryManagement.Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

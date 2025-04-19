@@ -1,0 +1,13 @@
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Core/bin/Debug/net8.0/CategoryManagement.Core.deps.json
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Core/bin/Debug/net8.0/CategoryManagement.Core.dll
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Core/bin/Debug/net8.0/CategoryManagement.Core.pdb
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Core/obj/Debug/net8.0/CategoryManagement.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Core/obj/Debug/net8.0/CategoryManagement.Core.AssemblyInfoInputs.cache
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Core/obj/Debug/net8.0/CategoryManagement.Core.AssemblyInfo.cs
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Core/obj/Debug/net8.0/CategoryManagement.Core.csproj.CoreCompileInputs.cache
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Core/obj/Debug/net8.0/CategoryManagement.Core.sourcelink.json
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Core/obj/Debug/net8.0/CategoryManagement.Core.dll
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Core/obj/Debug/net8.0/refint/CategoryManagement.Core.dll
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Core/obj/Debug/net8.0/CategoryManagement.Core.pdb
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Core/obj/Debug/net8.0/ref/CategoryManagement.Core.dll
+/Users/anhlai/learnenough/dotnet/category-management/backend/CategoryManagement/CategoryManagement.Core/obj/Debug/net8.0/CategoryManagement.Core.csproj.AssemblyReference.cache
