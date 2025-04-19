@@ -105,7 +105,7 @@ const formatDateShort = (dateString) => {
   }).format(date);
 };
 
-// Move the loadSessions function declaration above the watch effect
+// Function to load sessions
 const loadSessions = () => {
   if (!props.category?.id) return;
 
@@ -118,33 +118,12 @@ const loadSessions = () => {
   );
 };
 
-// Now use it in the watch effect
+// Single watch effect to load sessions when category changes
 watch(() => props.category?.id, (newCategoryId) => {
   if (newCategoryId) {
     loadSessions();
   }
 }, { immediate: true });
-
-// And in onMounted
-onMounted(() => {
-  if (props.category?.id) {
-    loadSessions();
-  }
-});
-
-// Load sessions when category changes
-watch(() => props.category?.id, (newCategoryId) => {
-  if (newCategoryId) {
-    loadSessions();
-  }
-}, { immediate: true });
-
-// Load initial sessions
-onMounted(() => {
-  if (props.category?.id) {
-    loadSessions();
-  }
-});
 
 // Event handlers
 const handlePageChange = (page) => {
