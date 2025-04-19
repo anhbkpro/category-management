@@ -1,7 +1,4 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using CategoryManagement.Core.Application.Interfaces;
-using CategoryManagement.Core.Domain;
 using CategoryManagement.Core.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 

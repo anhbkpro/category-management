@@ -1,7 +1,6 @@
 using CategoryManagement.Core.Application.Interfaces;
 using CategoryManagement.Core.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace CategoryManagement.Infrastructure.Persistence.Repositories
 {

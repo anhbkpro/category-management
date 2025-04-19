@@ -1,7 +1,6 @@
 using AutoMapper;
 using CategoryManagement.Core.Application.DTOs;
 using CategoryManagement.Core.Application.Interfaces;
-using CategoryManagement.Core.Domain;
 using CategoryManagement.Core.Domain.Entities;
 
 namespace CategoryManagement.Infrastructure.Services

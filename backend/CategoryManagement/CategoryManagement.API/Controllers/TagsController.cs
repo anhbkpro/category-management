@@ -1,5 +1,3 @@
-// In your TagsController.cs
-
 using CategoryManagement.Core.Application.DTOs;
 using CategoryManagement.Core.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;

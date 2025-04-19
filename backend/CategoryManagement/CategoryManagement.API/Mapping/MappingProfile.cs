@@ -1,6 +1,5 @@
 using AutoMapper;
 using CategoryManagement.Core.Application.DTOs;
-using CategoryManagement.Core.Domain;
 using CategoryManagement.Core.Domain.Entities;
 
 

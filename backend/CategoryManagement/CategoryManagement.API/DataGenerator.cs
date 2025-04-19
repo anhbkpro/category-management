@@ -1,4 +1,3 @@
-using CategoryManagement.Core.Domain;
 using CategoryManagement.Core.Domain.Entities;
 using CategoryManagement.Infrastructure.Persistence;
 

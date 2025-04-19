@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using CategoryManagement.Core.Application.DTOs;
 
 namespace CategoryManagement.Core.Application.Interfaces

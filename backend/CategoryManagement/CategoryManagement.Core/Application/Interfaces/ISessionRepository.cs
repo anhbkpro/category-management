@@ -1,4 +1,3 @@
-using CategoryManagement.Core.Domain;
 using CategoryManagement.Core.Domain.Entities;
 
 namespace CategoryManagement.Core.Application.Interfaces

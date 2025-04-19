@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace CategoryManagement.Core.Domain.Entities
 {
     public class Session
