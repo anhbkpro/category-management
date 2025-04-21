@@ -261,12 +261,13 @@ This application follows Clean Architecture principles with the following layers
 ## 🔒 Performance Considerations
 
 1. **Indexed Filtering**: Database indexes on commonly filtered fields (StartDate, Location)
+   1. Use `Stored Procedures` for complex queries
 2. **Pagination**: All session queries support pagination to limit data transfer
 3. **Eager Loading**: Optimized loading of related entities to avoid N+1 query problems
 4. **Caching**: Client-side caching of category data to reduce API calls
 5. **Optimized Frontend**: Efficient Vue components that only re-render when necessary
 
-## 📱 SEO Considerations
+## 📱 SEO Considerations (Not implemented)
 
 1. **Semantic HTML**: Proper HTML structure for better crawling
 2. **Meta Description**: Dynamic meta descriptions for each route
