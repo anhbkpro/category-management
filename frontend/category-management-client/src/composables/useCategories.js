@@ -1,5 +1,5 @@
 // src/composables/useCategories.js
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { categoryService } from '@/services/categoryService';
 
 export function useCategories() {

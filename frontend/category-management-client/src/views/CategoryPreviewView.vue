@@ -33,7 +33,7 @@ const route = useRoute();
 const router = useRouter();
 
 // Extract category ID from route params
-const categoryId = computed(() => parseInt(route.params.id));
+const categoryId = computed(() => Number.parseInt(route.params.id));
 
 // Get category data using the categories composable
 const { currentCategory: category, loading, error, fetchCategoryById } = useCategories();

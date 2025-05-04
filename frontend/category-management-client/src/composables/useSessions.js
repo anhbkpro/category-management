@@ -1,5 +1,5 @@
 // src/composables/useSessions.js
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { sessionService } from '@/services/sessionService';
 
 export function useSessions() {

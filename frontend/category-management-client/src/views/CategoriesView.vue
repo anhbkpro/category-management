@@ -216,9 +216,11 @@ const getDateRange = (category) => {
 
   if (startCondition?.value && endCondition?.value) {
     return `${formatDateShort(startCondition.value)} to ${formatDateShort(endCondition.value)}`;
-  } else if (startCondition?.value) {
+  }
+  if (startCondition?.value) {
     return `From ${formatDateShort(startCondition.value)}`;
-  } else if (endCondition?.value) {
+  }
+  if (endCondition?.value) {
     return `Until ${formatDateShort(endCondition.value)}`;
   }
 

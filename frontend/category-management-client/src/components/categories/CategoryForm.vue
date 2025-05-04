@@ -158,7 +158,7 @@
 
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue';
+import { ref, onMounted } from 'vue';
 import { tagService } from '@/services/tagService';
 
 const props = defineProps({
@@ -364,20 +364,20 @@ const saveCategory = () => {
   };
 
   // Add include tag conditions (Type = 0)
-  includeTags.value.forEach(tag => {
+  for (const tag of includeTags.value) {
     categoryData.conditions.push({
       type: 0,
       value: tag
     });
-  });
+  }
 
   // Add exclude tag conditions (Type = 1)
-  excludeTags.value.forEach(tag => {
+  for (const tag of excludeTags.value) {
     categoryData.conditions.push({
       type: 1,
       value: tag
     });
-  });
+  }
 
   // Add location condition (Type = 2)
   if (location.value) {

@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, watch } from 'vue';
+import { computed, watch } from 'vue';
 import SessionList from '@/components/sessions/SessionList.vue';
 import { useSessions } from '@/composables/useSessions';
 
@@ -86,9 +86,11 @@ const dateRange = computed(() => {
 
   if (startCondition?.value && endCondition?.value) {
     return `${formatDateShort(startCondition.value)} to ${formatDateShort(endCondition.value)}`;
-  } else if (startCondition?.value) {
+  }
+  if (startCondition?.value) {
     return `From ${formatDateShort(startCondition.value)}`;
-  } else if (endCondition?.value) {
+  }
+  if (endCondition?.value) {
     return `Until ${formatDateShort(endCondition.value)}`;
   }
 
