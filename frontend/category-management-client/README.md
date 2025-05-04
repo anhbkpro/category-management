@@ -16,6 +16,7 @@ yarn build
 ```
 
 ### Lints and fixes files
+- Biome(https://biomejs.dev/) is used for linting and formatting (Instead of ESLint and Prettier).
 ```
 yarn lint
 ```
