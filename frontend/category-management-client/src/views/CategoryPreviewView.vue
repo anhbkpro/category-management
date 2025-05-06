@@ -23,17 +23,21 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import CategoryPreview from '@/components/categories/CategoryPreview.vue';
 import { useCategories } from '@/composables/useCategories';
+import type { Category } from '@/services/categoryService';
 
 const route = useRoute();
 const router = useRouter();
 
 // Extract category ID from route params
-const categoryId = computed(() => Number.parseInt(route.params.id));
+const categoryId = computed<number | undefined>(() => {
+  const id = route.params.id;
+  return typeof id === 'string' ? Number.parseInt(id) : undefined;
+});
 
 // Get category data using the categories composable
 const { currentCategory: category, loading, error, fetchCategoryById } = useCategories();
@@ -41,12 +45,12 @@ const { currentCategory: category, loading, error, fetchCategoryById } = useCate
 // Load category data when component mounts
 onMounted(async () => {
   if (categoryId.value) {
-    await fetchCategoryById(categoryId.value);
+    await fetchCategoryById(categoryId.value.toString());
   }
 });
 
 // Navigation
-const goBack = () => {
+const goBack = (): void => {
   router.push({ name: 'categories' });
 };
 </script>

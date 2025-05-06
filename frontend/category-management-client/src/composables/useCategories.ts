@@ -1,40 +1,48 @@
-// src/composables/useCategories.js
-import { ref } from 'vue';
-import { categoryService } from '@/services/categoryService';
+// src/composables/useCategories.ts
+import { ref, type Ref } from 'vue';
+import { categoryService, type Category } from '@/services/categoryService';
 
 export function useCategories() {
-  const categories = ref([]);
-  const currentCategory = ref(null);
+  const categories: Ref<Category[]> = ref([]);
+  const currentCategory: Ref<Category | null> = ref(null);
   const loading = ref(false);
-  const error = ref(null);
+  const error: Ref<string | null> = ref(null);
 
-  const fetchCategories = async () => {
+  const fetchCategories = async (): Promise<void> => {
     loading.value = true;
     error.value = null;
     try {
       categories.value = await categoryService.getAll();
     } catch (err) {
-      error.value = err.message || 'Failed to fetch categories';
+      if (err instanceof Error) {
+        error.value = err.message;
+      } else {
+        error.value = 'Failed to fetch categories';
+      }
       console.error('Error fetching categories:', err);
     } finally {
       loading.value = false;
     }
   };
 
-  const fetchCategoryById = async (id) => {
+  const fetchCategoryById = async (id: string): Promise<void> => {
     loading.value = true;
     error.value = null;
     try {
       currentCategory.value = await categoryService.getById(id);
     } catch (err) {
-      error.value = err.message || 'Failed to fetch category';
+      if (err instanceof Error) {
+        error.value = err.message;
+      } else {
+        error.value = 'Failed to fetch category';
+      }
       console.error('Error fetching category:', err);
     } finally {
       loading.value = false;
     }
   };
 
-  const saveCategory = async (category) => {
+  const saveCategory = async (category: Category): Promise<boolean> => {
     loading.value = true;
     error.value = null;
     try {
@@ -51,7 +59,11 @@ export function useCategories() {
       }
       return true;
     } catch (err) {
-      error.value = err.message || 'Failed to save category';
+      if (err instanceof Error) {
+        error.value = err.message;
+      } else {
+        error.value = 'Failed to save category';
+      }
       console.error('Error saving category:', err);
       return false;
     } finally {
@@ -59,7 +71,7 @@ export function useCategories() {
     }
   };
 
-  const deleteCategory = async (id) => {
+  const deleteCategory = async (id: string): Promise<boolean> => {
     loading.value = true;
     error.value = null;
     try {
@@ -67,7 +79,11 @@ export function useCategories() {
       categories.value = categories.value.filter(c => c.id !== id);
       return true;
     } catch (err) {
-      error.value = err.message || 'Failed to delete category';
+      if (err instanceof Error) {
+        error.value = err.message;
+      } else {
+        error.value = 'Failed to delete category';
+      }
       console.error('Error deleting category:', err);
       return false;
     } finally {

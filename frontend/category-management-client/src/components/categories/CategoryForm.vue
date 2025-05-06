@@ -156,58 +156,71 @@
   </div>
 </template>
 
-
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { tagService } from '@/services/tagService';
 
-const props = defineProps({
-  category: {
-    type: Object,
-    default: () => ({
-      id: null,
-      name: '',
-      description: '',
-      conditions: []
-    })
-  }
-});
+// --- Type Definitions ---
+interface CategoryCondition {
+  type: number;
+  value: string;
+}
 
-const emit = defineEmits(['save', 'cancel']);
+interface Category {
+  id: string | null;
+  name: string;
+  description: string;
+  conditions: CategoryCondition[];
+}
 
-// Form fields
+interface Tag {
+  name: string;
+}
+
+// --- Props ---
+const props = defineProps<{
+  category: Category;
+}>();
+
+// --- Emits ---
+const emit = defineEmits<{
+  (e: 'save', category: Category): void;
+  (e: 'cancel'): void;
+}>();
+
+// --- Form fields ---
 const form = ref({
   id: props.category.id,
   name: props.category.name,
   description: props.category.description
 });
 
-// Tag management
-const includeTags = ref([]);
-const excludeTags = ref([]);
+// --- Tag management ---
+const includeTags = ref<string[]>([]);
+const excludeTags = ref<string[]>([]);
 const newIncludeTag = ref('');
 const newExcludeTag = ref('');
 
-// Location and Date Range
+// --- Location and Date Range ---
 const location = ref('');
 const startDate = ref('');
 const endDate = ref('');
 
-// Tags from database
-const availableTags = ref([]);
+// --- Tags from database ---
+const availableTags = ref<Tag[]>([]);
 const loadingTags = ref(false);
 
-// Include tags autocomplete
-const filteredIncludeTags = ref([]);
+// --- Include tags autocomplete ---
+const filteredIncludeTags = ref<Tag[]>([]);
 const showIncludeTagSuggestions = ref(false);
 const selectedIncludeTagIndex = ref(-1);
 
-// Exclude tags autocomplete
-const filteredExcludeTags = ref([]);
+// --- Exclude tags autocomplete ---
+const filteredExcludeTags = ref<Tag[]>([]);
 const showExcludeTagSuggestions = ref(false);
 const selectedExcludeTagIndex = ref(-1);
 
-// Fetch available tags
+// --- Fetch available tags ---
 const fetchTags = async () => {
   loadingTags.value = true;
   try {
@@ -219,7 +232,7 @@ const fetchTags = async () => {
   }
 };
 
-// Include tags filtering and selection
+// --- Include tags filtering and selection ---
 const filterIncludeTagSuggestions = () => {
   if (!newIncludeTag.value.trim()) {
     filteredIncludeTags.value = [];
@@ -231,16 +244,15 @@ const filterIncludeTagSuggestions = () => {
   filteredIncludeTags.value = availableTags.value
     .filter(tag => tag.name.toLowerCase().includes(search))
     .filter(tag => !includeTags.value.includes(tag.name))
-    .slice(0, 5); // Limit to 5 suggestions
+    .slice(0, 5);
 
   showIncludeTagSuggestions.value = filteredIncludeTags.value.length > 0;
   selectedIncludeTagIndex.value = -1;
 };
 
-const selectIncludeTag = (tagName) => {
+const selectIncludeTag = (tagName: string) => {
   newIncludeTag.value = tagName;
   addIncludeTag();
-  console.log(`includeTags: ${includeTags.value}`);
   showIncludeTagSuggestions.value = false;
 };
 
@@ -251,8 +263,9 @@ const selectNextIncludeTag = () => {
 
 const selectPrevIncludeTag = () => {
   if (filteredIncludeTags.value.length === 0) return;
-  selectedIncludeTagIndex.value = selectedIncludeTagIndex.value <= 0 ?
-    filteredIncludeTags.value.length - 1 : selectedIncludeTagIndex.value - 1;
+  selectedIncludeTagIndex.value = selectedIncludeTagIndex.value <= 0
+    ? filteredIncludeTags.value.length - 1
+    : selectedIncludeTagIndex.value - 1;
 };
 
 const hideIncludeTagSuggestions = () => {
@@ -261,7 +274,7 @@ const hideIncludeTagSuggestions = () => {
   }, 200);
 };
 
-// Exclude tags filtering and selection
+// --- Exclude tags filtering and selection ---
 const filterExcludeTagSuggestions = () => {
   if (!newExcludeTag.value.trim()) {
     filteredExcludeTags.value = [];
@@ -273,13 +286,13 @@ const filterExcludeTagSuggestions = () => {
   filteredExcludeTags.value = availableTags.value
     .filter(tag => tag.name.toLowerCase().includes(search))
     .filter(tag => !excludeTags.value.includes(tag.name))
-    .slice(0, 5); // Limit to 5 suggestions
+    .slice(0, 5);
 
   showExcludeTagSuggestions.value = filteredExcludeTags.value.length > 0;
   selectedExcludeTagIndex.value = -1;
 };
 
-const selectExcludeTag = (tagName) => {
+const selectExcludeTag = (tagName: string) => {
   newExcludeTag.value = tagName;
   addExcludeTag();
   showExcludeTagSuggestions.value = false;
@@ -292,8 +305,9 @@ const selectNextExcludeTag = () => {
 
 const selectPrevExcludeTag = () => {
   if (filteredExcludeTags.value.length === 0) return;
-  selectedExcludeTagIndex.value = selectedExcludeTagIndex.value <= 0 ?
-    filteredExcludeTags.value.length - 1 : selectedExcludeTagIndex.value - 1;
+  selectedExcludeTagIndex.value = selectedExcludeTagIndex.value <= 0
+    ? filteredExcludeTags.value.length - 1
+    : selectedExcludeTagIndex.value - 1;
 };
 
 const hideExcludeTagSuggestions = () => {
@@ -302,11 +316,10 @@ const hideExcludeTagSuggestions = () => {
   }, 200);
 };
 
-// Load tags when component mounts
+// --- Load tags and initialize form on mount ---
 onMounted(() => {
   fetchTags();
 
-  // Initialize form with existing category data if editing
   if (props.category.id) {
     form.value = { ...props.category };
 
@@ -331,34 +344,36 @@ onMounted(() => {
   }
 });
 
-// Tag management methods
+// --- Tag management methods ---
 const addIncludeTag = () => {
-  if (newIncludeTag.value.trim() && !includeTags.value.includes(newIncludeTag.value.trim())) {
-    includeTags.value.push(newIncludeTag.value.trim());
+  const tag = newIncludeTag.value.trim();
+  if (tag && !includeTags.value.includes(tag)) {
+    includeTags.value.push(tag);
     newIncludeTag.value = '';
     showIncludeTagSuggestions.value = false;
   }
 };
 
-const removeIncludeTag = (index) => {
+const removeIncludeTag = (index: number) => {
   includeTags.value.splice(index, 1);
 };
 
 const addExcludeTag = () => {
-  if (newExcludeTag.value.trim() && !excludeTags.value.includes(newExcludeTag.value.trim())) {
-    excludeTags.value.push(newExcludeTag.value.trim());
+  const tag = newExcludeTag.value.trim();
+  if (tag && !excludeTags.value.includes(tag)) {
+    excludeTags.value.push(tag);
     newExcludeTag.value = '';
     showExcludeTagSuggestions.value = false;
   }
 };
 
-const removeExcludeTag = (index) => {
+const removeExcludeTag = (index: number) => {
   excludeTags.value.splice(index, 1);
 };
 
-// Save category with all conditions
+// --- Save category with all conditions ---
 const saveCategory = () => {
-  const categoryData = {
+  const categoryData: Category = {
     ...form.value,
     conditions: []
   };
@@ -405,6 +420,7 @@ const saveCategory = () => {
   emit('save', categoryData);
 };
 </script>
+
 <style scoped>
 /* Existing styles */
 

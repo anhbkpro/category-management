@@ -30,7 +30,7 @@
       <SessionList
         :sessions="sessions"
         :loading="loading"
-        :error="error"
+        :error="error || 'Failed to load sessions'"
         :pagination="pagination"
         :sortOptions="sortOptions"
         @pageChange="handlePageChange"
@@ -40,17 +40,27 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, watch } from 'vue';
 import SessionList from '@/components/sessions/SessionList.vue';
 import { useSessions } from '@/composables/useSessions';
 
-const props = defineProps({
-  category: {
-    type: Object,
-    required: true
-  }
-});
+// --- Type Definitions ---
+interface CategoryCondition {
+  type: string;
+  value: string;
+}
+
+interface Category {
+  id: string;
+  name: string;
+  conditions: CategoryCondition[];
+}
+
+// --- Props ---
+const props = defineProps<{
+  category: Category;
+}>();
 
 // Extract the session service functionality
 const {
@@ -63,26 +73,26 @@ const {
 } = useSessions();
 
 // Helper computed properties for displaying filter conditions
-const includeTags = computed(() => {
+const includeTags = computed<string[]>(() => {
   return props.category?.conditions
-    ?.filter(c => c.type === 'IncludeTag')
-    ?.map(c => c.value) || [];
+    ?.filter((c: CategoryCondition) => c.type === 'IncludeTag')
+    ?.map((c: CategoryCondition) => c.value) || [];
 });
 
-const excludeTags = computed(() => {
+const excludeTags = computed<string[]>(() => {
   return props.category?.conditions
-    ?.filter(c => c.type === 'ExcludeTag')
-    ?.map(c => c.value) || [];
+    ?.filter((c: CategoryCondition) => c.type === 'ExcludeTag')
+    ?.map((c: CategoryCondition) => c.value) || [];
 });
 
-const location = computed(() => {
-  const locationCondition = props.category?.conditions?.find(c => c.type === 'Location');
+const location = computed<string>(() => {
+  const locationCondition = props.category?.conditions?.find((c: CategoryCondition) => c.type === 'Location');
   return locationCondition?.value || '';
 });
 
-const dateRange = computed(() => {
-  const startCondition = props.category?.conditions?.find(c => c.type === 'StartDateMin');
-  const endCondition = props.category?.conditions?.find(c => c.type === 'StartDateMax');
+const dateRange = computed<string>(() => {
+  const startCondition = props.category?.conditions?.find((c: CategoryCondition) => c.type === 'StartDateMin');
+  const endCondition = props.category?.conditions?.find((c: CategoryCondition) => c.type === 'StartDateMax');
 
   if (startCondition?.value && endCondition?.value) {
     return `${formatDateShort(startCondition.value)} to ${formatDateShort(endCondition.value)}`;
@@ -98,7 +108,7 @@ const dateRange = computed(() => {
 });
 
 // Format date helper
-const formatDateShort = (dateString) => {
+const formatDateShort = (dateString: string): string => {
   const date = new Date(dateString);
   return new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
@@ -108,7 +118,7 @@ const formatDateShort = (dateString) => {
 };
 
 // Function to load sessions
-const loadSessions = () => {
+const loadSessions = (): void => {
   if (!props.category?.id) return;
 
   fetchSessionsByCategory(
@@ -121,14 +131,14 @@ const loadSessions = () => {
 };
 
 // Single watch effect to load sessions when category changes
-watch(() => props.category?.id, (newCategoryId) => {
+watch(() => props.category?.id, (newCategoryId: string) => {
   if (newCategoryId) {
     loadSessions();
   }
 }, { immediate: true });
 
 // Event handlers
-const handlePageChange = (page) => {
+const handlePageChange = (page: number): void => {
   fetchSessionsByCategory(
     props.category.id,
     page,
@@ -138,7 +148,7 @@ const handlePageChange = (page) => {
   );
 };
 
-const handleSortChange = (newSortOptions) => {
+const handleSortChange = (newSortOptions: { sortBy: string; ascending: boolean }): void => {
   fetchSessionsByCategory(
     props.category.id,
     1, // Reset to first page when sorting changes

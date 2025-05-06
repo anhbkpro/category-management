@@ -1,10 +1,10 @@
-// src/router/index.js
-import { createRouter, createWebHistory } from 'vue-router';
+// src/router/index.ts
+import { createRouter, createWebHistory, type RouteRecordRaw, type NavigationGuardNext, type RouteLocationNormalized } from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
 import CategoriesView from '@/views/CategoriesView.vue';
 import CategoryPreviewView from '@/views/CategoryPreviewView.vue';
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
@@ -40,16 +40,26 @@ const router = createRouter({
 });
 
 // Update document title for SEO
-router.beforeEach((to, from, next) => {
-  document.title = to.meta.title || 'Learning Session Management';
+router.beforeEach(
+  (
+    to: RouteLocationNormalized,
+    from: RouteLocationNormalized,
+    next: NavigationGuardNext
+  ) => {
+    document.title = (to.meta.title as string) || 'Learning Session Management';
 
-  // Update meta description for SEO
-  const metaDescription = document.querySelector('meta[name="description"]');
-  if (metaDescription) {
-    metaDescription.setAttribute('content', to.meta.description || 'Manage learning sessions with dynamic categories');
+    // Update meta description for SEO
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        'content',
+        (to.meta.description as string) ||
+          'Manage learning sessions with dynamic categories'
+      );
+    }
+
+    next();
   }
-
-  next();
-});
+);
 
 export default router;

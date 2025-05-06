@@ -1,41 +1,53 @@
-// src/composables/useSessions.js
-import { ref } from 'vue';
-import { sessionService } from '@/services/sessionService';
+// src/composables/useSessions.ts
+import { ref, type Ref } from 'vue';
+import { sessionService, type Session, type PaginatedSessions } from '@/services/sessionService';
+
+interface Pagination {
+  currentPage: number;
+  pageSize: number;
+  totalCount: number;
+  totalPages: number;
+}
+
+interface SortOptions {
+  sortBy: string;
+  ascending: boolean;
+}
 
 export function useSessions() {
-  const sessions = ref([]);
+  const sessions: Ref<Session[]> = ref([]);
   const loading = ref(false);
-  const error = ref(null);
-  const pagination = ref({
+  const error: Ref<string | null> = ref(null);
+  const pagination: Ref<Pagination> = ref({
     currentPage: 1,
     pageSize: 9,
     totalCount: 0,
     totalPages: 0
   });
-  const sortOptions = ref({
+  const sortOptions: Ref<SortOptions> = ref({
     sortBy: 'startDate',
     ascending: true
   });
 
   /**
    * Fetch sessions that match a category's criteria
-   * @param {number} categoryId - The ID of the category to filter by
+   * @param {string} categoryId - The ID of the category to filter by
    * @param {number} page - The page number (1-based)
    * @param {number} pageSize - Number of items per page
    * @param {string} sortBy - Field to sort by (startDate, title, location)
    * @param {boolean} ascending - True for ascending order, false for descending
    */
   const fetchSessionsByCategory = async (
-    categoryId,
+    categoryId: string,
     page = 1,
     pageSize = 9,
     sortBy = 'startDate',
     ascending = true
-  ) => {
+  ): Promise<void> => {
     loading.value = true;
     error.value = null;
     try {
-      const response = await sessionService.getByCategory(
+      const response: PaginatedSessions = await sessionService.getByCategory(
         categoryId,
         page,
         pageSize,
@@ -43,7 +55,7 @@ export function useSessions() {
         ascending
       );
 
-      sessions.value = response.items;
+      sessions.value = response.sessions;
       pagination.value = {
         currentPage: response.currentPage,
         pageSize: response.pageSize,
@@ -52,7 +64,11 @@ export function useSessions() {
       };
       sortOptions.value = { sortBy, ascending };
     } catch (err) {
-      error.value = err.message || 'Failed to fetch sessions';
+      if (err instanceof Error) {
+        error.value = err.message;
+      } else {
+        error.value = 'Failed to fetch sessions';
+      }
       console.error('Error fetching sessions:', err);
       sessions.value = [];
     } finally {
@@ -62,9 +78,9 @@ export function useSessions() {
 
   /**
    * Reload the current page of sessions with the same parameters
-   * @param {number} categoryId - The category ID
+   * @param {string} categoryId - The category ID
    */
-  const refreshSessions = async (categoryId) => {
+  const refreshSessions = async (categoryId: string): Promise<void> => {
     await fetchSessionsByCategory(
       categoryId,
       pagination.value.currentPage,
@@ -76,11 +92,15 @@ export function useSessions() {
 
   /**
    * Change the sort options and reload sessions
-   * @param {number} categoryId - The category ID
+   * @param {string} categoryId - The category ID
    * @param {string} sortBy - Field to sort by
    * @param {boolean} ascending - Sort direction
    */
-  const changeSorting = async (categoryId, sortBy, ascending) => {
+  const changeSorting = async (
+    categoryId: string,
+    sortBy: string,
+    ascending: boolean
+  ): Promise<void> => {
     await fetchSessionsByCategory(
       categoryId,
       1, // Reset to first page when changing sort
@@ -92,10 +112,13 @@ export function useSessions() {
 
   /**
    * Change the page size and reload sessions
-   * @param {number} categoryId - The category ID
+   * @param {string} categoryId - The category ID
    * @param {number} newPageSize - New page size
    */
-  const changePageSize = async (categoryId, newPageSize) => {
+  const changePageSize = async (
+    categoryId: string,
+    newPageSize: number
+  ): Promise<void> => {
     await fetchSessionsByCategory(
       categoryId,
       1, // Reset to first page when changing page size

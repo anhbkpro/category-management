@@ -102,55 +102,71 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, watch } from 'vue';
 
-const props = defineProps({
-  sessions: {
-    type: Array,
-    default: () => []
-  },
-  loading: {
-    type: Boolean,
-    default: false
-  },
-  error: {
-    type: String,
-    default: ''
-  },
-  pagination: {
-    type: Object,
-    default: () => ({
-      currentPage: 1,
-      pageSize: 9,
-      totalCount: 0,
-      totalPages: 1
-    })
-  },
-  sortOptions: {
-    type: Object,
-    default: () => ({
-      sortBy: 'startDate',
-      ascending: true
-    })
-  }
-});
+// Type definitions
+interface Speaker {
+  id: string;
+  name: string;
+}
 
-const emit = defineEmits(['pageChange', 'sortChange']);
+interface Session {
+  id: string;
+  title: string;
+  startDate: string;
+  endDate: string;
+  location: string;
+  isOnline: boolean;
+  tags: string[];
+  speakers: Speaker[];
+  description: string;
+}
+
+interface Pagination {
+  currentPage: number;
+  pageSize: number;
+  totalCount: number;
+  totalPages: number;
+}
+
+interface SortOptions {
+  sortBy: string;
+  ascending: boolean;
+}
+
+// Props with types
+const props = defineProps<{
+  sessions: Session[];
+  loading: boolean;
+  error: string;
+  pagination: Pagination;
+  sortOptions: SortOptions;
+}>();
+
+// Emits with types
+const emit = defineEmits<{
+  (e: 'pageChange', page: number): void;
+  (e: 'sortChange', options: SortOptions): void;
+}>();
 
 // Local copy of sort options to avoid direct mutation
-const localSortOptions = ref({
+const localSortOptions = ref<SortOptions>({
   sortBy: props.sortOptions.sortBy,
   ascending: props.sortOptions.ascending
 });
 
 // Update local sort options when props change
-watch(() => props.sortOptions, (newOptions) => {
-  localSortOptions.value = { ...newOptions };
-}, { deep: true });
+watch(
+  () => props.sortOptions,
+  (newOptions) => {
+    localSortOptions.value = { ...newOptions };
+  },
+  { deep: true }
+);
 
 // Pagination methods
-const changePage = (page) => {
+const changePage = (page: number) => {
   if (page < 1 || page > props.pagination.totalPages) return;
   emit('pageChange', page);
 };
@@ -166,7 +182,7 @@ const toggleSortDirection = () => {
 };
 
 // Helper methods
-const formatDate = (dateString) => {
+const formatDate = (dateString: string) => {
   const date = new Date(dateString);
   return new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
@@ -177,7 +193,7 @@ const formatDate = (dateString) => {
   }).format(date);
 };
 
-const truncateText = (text, maxLength) => {
+const truncateText = (text: string, maxLength: number) => {
   if (!text) return '';
   return text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
 };
