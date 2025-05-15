@@ -12,6 +12,7 @@ A full-stack application for managing dynamic categories to filter and organize 
 ## 🛠️ Tech Stack
 
 ### Backend
+
 - ASP.NET Core 6.0 Web API
 - Entity Framework Core 6.0
 - SQL Server
@@ -20,6 +21,7 @@ A full-stack application for managing dynamic categories to filter and organize 
 - AutoMapper
 
 ### Frontend
+
 - Vue 3 with Composition API
 - Vue Router for navigation
 - Modern JavaScript (ES6+)
@@ -29,7 +31,7 @@ A full-stack application for managing dynamic categories to filter and organize 
 
 ### Backend Structure
 
-```
+```text
 CategoryManagement/
 ├── CategoryManagement.API/
 │   ├── Controllers/
@@ -74,7 +76,7 @@ CategoryManagement/
 
 ### Frontend Structure
 
-```
+```text
 src/
 ├── assets/
 │   └── styles/
@@ -118,12 +120,14 @@ src/
 ### Backend Setup
 
 1. Clone the repository
+
    ```bash
    git clone git@github.com:anhbkpro/category-management.git
    cd category-management/backend
    ```
 
 2. Update the connection string in `appsettings.json`
+
    ```json
    "ConnectionStrings": {
      "DefaultConnection": "Server=localhost;Database=CategoryManagement;Trusted_Connection=True;MultipleActiveResultSets=true"
@@ -131,11 +135,13 @@ src/
    ```
 
 3. Run EF Core migrations to create the database
+
    ```bash
    dotnet ef database update --project CategoryManagement.Infrastructure --startup-project CategoryManagement.API
    ```
 
 4. Start the API
+
    ```bash
    dotnet run --project CategoryManagement.API
    ```
@@ -143,26 +149,31 @@ src/
 ### Frontend Setup
 
 1. Navigate to the frontend directory
+
    ```bash
    cd ../frontend
    ```
 
 2. Install dependencies
+
    ```bash
    npm install
    ```
 
 3. Update the API URL in `.env.local`
-   ```
+
+   ```bash
    VUE_APP_API_URL=http://localhost:5093/api
    ```
 
 4. Start the development server
+
    ```bash
    npm run serve
    ```
 
 5. Build for production
+
    ```bash
    npm run build
    ```
@@ -172,47 +183,55 @@ src/
 The application can be started using Docker Compose, which will set up the entire stack including the database, API, and frontend.
 
 1. Make sure Docker and Docker Compose are installed on your system
+
    ```bash
    docker --version
    docker-compose --version
    ```
 
 2. Navigate to the project root directory
+
    ```bash
    cd category-management
    ```
 
 3. Start the application using Docker Compose
+
    ```bash
    docker-compose up -d
    ```
 
 4. Check the status of the containers
+
    ```bash
    docker-compose ps
    ```
 
 5. Access the application:
-   - Frontend: http://localhost:8080
-   - API: http://localhost:5001
-   - API Health Check: http://localhost:5001/health
+   - Frontend: <http://localhost:8080>
+   - API: <http://localhost:5001>
+   - API Health Check: <http://localhost:5001/health>
 
 6. View logs from the containers
+
    ```bash
    docker-compose logs -f
    ```
 
 7. Stop the application
+
    ```bash
    docker-compose down
    ```
 
 8. To rebuild the containers after making changes
+
    ```bash
    docker-compose up -d --build
    ```
 
 The Docker Compose setup includes:
+
 - SQL Server database with persistent volume
 - ASP.NET Core API with health checks
 - Vue.js frontend
